@@ -22,12 +22,11 @@ st.set_page_config(
 )
 
 st.title("🛍️ Multilingual RAG Engine for Japanese E-Commerce")
-st.markdown("Query customer reviews seamlessly across languages powered by local **ChromaDB**, **Multilingual E5 Embeddings**, and **Google Gemini**.")
+st.markdown("Query customer reviews seamlessly across languages powered by local **ChromaDB**, **Multilingual E5 Embeddings**, and **Groq**.")
 
 # Sidebar for configuration
 with st.sidebar:
     st.header("⚙️ RAG Settings")
-    api_key_input = st.text_input("Google AI Studio API Key", type="password", help="Enter your free Gemini API key.")
     k_val = st.slider("Retrieved Chunks (Top-K)", min_value=2, max_value=10, value=4)
     
     st.markdown("---")
@@ -36,9 +35,6 @@ with st.sidebar:
     st.markdown("- **Vector Store:** Local ChromaDB")
     st.markdown("- **Embedding:** `multilingual-e5-base`")
 
-# Set API key if provided via UI
-if api_key_input:
-    os.environ["GEMINI_API_KEY"] = api_key_input
 
 # Initialize retriever session state
 @st.cache_resource
